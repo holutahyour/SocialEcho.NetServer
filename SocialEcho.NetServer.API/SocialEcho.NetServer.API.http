@@ -1,0 +1,6 @@
+@SocialEcho.NetServer.API_HostAddress = http://localhost:5204
+
+GET {{SocialEcho.NetServer.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
