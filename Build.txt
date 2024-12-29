@@ -1,0 +1,8 @@
+// Mongo DB Docker Container Creation Command
+
+docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db mongo
+
+docker run -d --rm --name mongo -v mongodbdata:/data/db --network="host" -e CONNECTION_STRING="mongodb://localhost:27017" mongo
+
+docker run --network="host" -e CONNECTION_STRING="mongodb://localhost:27017" your-container-image
+
