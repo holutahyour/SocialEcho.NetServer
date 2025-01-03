@@ -2,13 +2,13 @@
 
 public class User : BaseEntity<Guid>
 {
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     public string Email { get; set; }
 
-    public string Avatar { get; set; }
+    public required string Avatar { get; set; }
 
-    public string[] Roles { get; set; }
+    public required string[] Roles { get; set; }
 
     public Guid[] FollowerIds { get; set; }
 

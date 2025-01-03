@@ -2,9 +2,9 @@
 
 public class Community : BaseEntity<Guid>
 {
-    public string Name { get; init; }
+    public required string Name { get; init; }
 
-    public string Description { get; init; }
+    public required string Description { get; init; }
 
     public string Banner { get; init; }
 
@@ -13,4 +13,6 @@ public class Community : BaseEntity<Guid>
     public Guid[] MembersIds { get; init; }
 
     public Guid[] BannedMembersIds { get; init; }
+
+    public Guid[] RuleIds { get; init; }
 }
