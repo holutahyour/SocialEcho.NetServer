@@ -1,4 +1,4 @@
-﻿namespace SocialEcho.NetServer.Domain.DTOs.Rule;
+﻿namespace SocialEcho.NetServer.Domain.DTOs;
 
 public class RuleDTO
 {

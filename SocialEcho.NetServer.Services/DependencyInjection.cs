@@ -19,6 +19,7 @@ public static class DependencyInjection
 
         return services
             .AddSingleton(mapper)
+            .AddMongoService<User>("users")
             .AddMongoService<Post>("posts");
     }
 }

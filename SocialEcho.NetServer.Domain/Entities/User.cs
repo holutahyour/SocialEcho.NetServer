@@ -4,11 +4,11 @@ public class User : BaseEntity<Guid>
 {
     public required string Name { get; set; }
 
-    public string Email { get; set; }
+    public required string Email { get; set; }
 
     public required string Avatar { get; set; }
 
-    public required string[] Roles { get; set; }
+    public required string Role { get; set; }
 
     public Guid[] FollowerIds { get; set; }
 

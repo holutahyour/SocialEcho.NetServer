@@ -1,4 +1,4 @@
-﻿namespace SocialEcho.NetServer.Domain.DTOs.Community;
+﻿namespace SocialEcho.NetServer.Domain.DTOs;
 
 public class CommunityDTO
 {

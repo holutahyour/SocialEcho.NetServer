@@ -10,7 +10,6 @@
     <Folder Include="Enums\" />
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Utilities\" />
   </ItemGroup>
 
   <ItemGroup>

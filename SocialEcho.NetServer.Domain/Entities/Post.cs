@@ -1,4 +1,4 @@
-﻿namespace SocialEcho.NetServer.Domain;
+﻿namespace SocialEcho.NetServer.Domain.Entities;
 
 public class Post : BaseEntity<Guid>
 {

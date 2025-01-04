@@ -6,6 +6,8 @@ public class AutoMapperConfig : Profile
 {
     public AutoMapperConfig()
     {
+        AddMappingType(typeof(User), typeof(UserDTO));
+        AddMappingType(typeof(User), typeof(CreateUserDTO));
         AddMappingType(typeof(Post), typeof(PostDTO));
 
 
@@ -20,18 +22,6 @@ public class AutoMapperConfig : Profile
         foreach (var mapping in mappings)
         {
             CreateMap(mapping.Key, mapping.Value).ReverseMap();
-
-            //Type createDtoType = GetCreateDtoType(mapping);
-            //if (createDtoType != null)
-            //{
-            //    CreateMap(mapping, createDtoType)?.ReverseMap();
-            //}
-
-            //Type updateDtoType = GetUpdateDtoType(mapping);
-            //if (updateDtoType != null)
-            //{
-            //    CreateMap(mapping, updateDtoType)?.ReverseMap();
-            //}
         }
     }
 
