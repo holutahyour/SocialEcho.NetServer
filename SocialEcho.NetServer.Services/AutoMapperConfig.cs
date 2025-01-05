@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-
-namespace SocialEcho.NetServer.Services;
+﻿namespace SocialEcho.NetServer.Services;
 
 public class AutoMapperConfig : Profile
 {
@@ -8,6 +6,7 @@ public class AutoMapperConfig : Profile
     {
         AddMappingType(typeof(User), typeof(UserDTO));
         AddMappingType(typeof(User), typeof(CreateUserDTO));
+        AddMappingType(typeof(User), typeof(UpdateUserDTO));
         AddMappingType(typeof(Post), typeof(PostDTO));
 
 

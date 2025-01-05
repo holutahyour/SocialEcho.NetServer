@@ -2,5 +2,7 @@
 
 public class UpdateUserDTO : CreateUserDTO
 {
-    public Guid Id { get; set; }
+    public string Location { get; set; }
+    public string Bio { get; set; }
+    public string Interests { get; set; }
 }

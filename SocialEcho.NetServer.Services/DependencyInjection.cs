@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using SocialEcho.NetServer.Domain;
+using SocialEcho.NetServer.Services.Services.Implementation;
 
 namespace SocialEcho.NetServer.Services;
 
@@ -17,9 +18,19 @@ public static class DependencyInjection
 
         IMapper mapper = mapperConfiguration.CreateMapper();
 
+        //services.AddSingleton<IMongoCollection<User>>(serviceProvider =>
+        //{
+        //    var database = serviceProvider.GetRequiredService<IMongoDatabase>();
+        //    var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
+
+        //    return database.GetCollection<User>("users");
+        //});
+
         return services
             .AddSingleton(mapper)
             .AddMongoService<User>("users")
-            .AddMongoService<Post>("posts");
+            .AddMongoService<Post>("posts")
+            .AddMongoService<Community>("communities")
+            .AddScoped<IUserService, UserService>();
     }
 }

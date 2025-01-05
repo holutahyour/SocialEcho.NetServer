@@ -15,4 +15,8 @@
     <PackageReference Include="Tahyour.Base.Library" Version="1.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SocialEcho.NetServer.Domain\SocialEcho.NetServer.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

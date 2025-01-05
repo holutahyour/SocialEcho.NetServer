@@ -1,4 +1,15 @@
-﻿global using Microsoft.Extensions.DependencyInjection;
+﻿global using AutoMapper;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.Extensions.DependencyInjection;
 global using SocialEcho.NetServer.Domain.DTOs;
 global using SocialEcho.NetServer.Domain.Entities;
+global using SocialEcho.NetServer.Domain.Utilities;
+global using SocialEcho.NetServer.Services.Services.Interfaces;
+global using System.Text.Json;
+global using Tahyour.Base.Common.Domain.Common;
+global using Tahyour.Base.Common.Domain.Entities;
+global using Tahyour.Base.Common.Domain.Utilities;
+global using Tahyour.Base.Common.Repositories.Interfaces;
 global using Tahyour.Base.Common.Services;
+global using Tahyour.Base.Common.Services.Implementation;
+global using Tahyour.Base.Common.Services.Interface;

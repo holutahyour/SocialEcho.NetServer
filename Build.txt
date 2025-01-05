@@ -6,3 +6,12 @@ docker run -d --rm --name mongo -v mongodbdata:/data/db --network="host" -e CONN
 
 docker run --network="host" -e CONNECTION_STRING="mongodb://localhost:27017" your-container-image
 
+
+// TODO
+
+- Adjust Create Service Method
+- Dserilize Auditlog Values
+
+
+
+

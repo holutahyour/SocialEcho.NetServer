@@ -1,22 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SocialEcho.NetServer.Services.Services.Interfaces;
 using Tahyour.Base.Common.Domain.Common;
 
 namespace SocialEcho.NetServer.API.Controllers;
 
 public class UsersController : MongoBaseController<User, UserDTO>
 {
-    public UsersController(IMongoBaseService<User> service) : base(service)
+    private readonly IUserService _service;
+
+    public UsersController(IUserService service) : base(service)
     {
+        _service = service;
     }
 
     [HttpPost]
     public async Task<Result<UserDTO>> CreateAsync([FromBody] CreateUserDTO request)
     {
-        return await base.CreateAsync(request);
+        new Result<UserDTO>().RequestTime = DateTime.UtcNow;
+        Result<UserDTO> obj = await _service.CreateAsync(request);
+        obj.ResponseTime = DateTime.UtcNow;
+        return obj;
     }
 
     [HttpPut("{id}")]
-    public async Task<Result<bool>> UpdateAsync(Guid id, [FromBody] UserDTO request)
+    public async Task<Result<bool>> UpdateAsync(Guid id, [FromBody] UpdateUserDTO request)
     {
         return await base.UpdateAsync(id, request);
     }
