@@ -1,6 +1,6 @@
 ﻿namespace SocialEcho.NetServer.Domain.DTOs;
 
-public class UserDTO : UpdateUserDTO
+public class UserDTO : UpdateUserDTO, IUserAggregate
 {
     public Guid Id { get; set; }
     public string DurationOnPlatform { get; set; }

@@ -7,6 +7,8 @@ public class AutoMapperConfig : Profile
         AddMappingType(typeof(User), typeof(UserDTO));
         AddMappingType(typeof(User), typeof(CreateUserDTO));
         AddMappingType(typeof(User), typeof(UpdateUserDTO));
+        AddMappingType(typeof(User), typeof(PublicUserDTO));
+        AddMappingType(typeof(User), typeof(RelationshipUserDTO));
         AddMappingType(typeof(Post), typeof(PostDTO));
 
 

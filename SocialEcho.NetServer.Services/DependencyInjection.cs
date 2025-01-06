@@ -31,6 +31,7 @@ public static class DependencyInjection
             .AddMongoService<User>("users")
             .AddMongoService<Post>("posts")
             .AddMongoService<Community>("communities")
+            .AddMongoService<Relationship>("relationships")
             .AddScoped<IUserService, UserService>();
     }
 }
