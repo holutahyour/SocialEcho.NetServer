@@ -1,6 +1,4 @@
-﻿using SocialEcho.NetServer.Domain;
-
-namespace SocialEcho.NetServer.Services.Services.Implementation;
+﻿namespace SocialEcho.NetServer.Services.Services.Implementation;
 
 public class UserService : MongoBaseService<User>, IUserService
 {
@@ -11,6 +9,8 @@ public class UserService : MongoBaseService<User>, IUserService
     private readonly IMongoRepository<AuditLog> _auditLogRepository;
     private readonly IMapper _mapper;
     private readonly IHttpContextAccessor _httpContextAccessor;
+
+    private readonly string dateFormat = "MMM d, yyyy";
 
     public UserService(
         IMongoRepository<User> baseRepository,
@@ -89,7 +89,7 @@ public class UserService : MongoBaseService<User>, IUserService
         return result;
     }
 
-    public async Task<Result<dynamic>> GetPublicUsers(Guid currentUser, string search = null, int size = 5, string select = null)
+    public async Task<Result<dynamic>> GetPublicUsers(Guid currentUser, string search = null, int size = 5, string select = "id,name,avatar,location,followercount")
     {
         Result<object> result = new Result<object>(isSuccess: false);
         try
@@ -164,14 +164,15 @@ public class UserService : MongoBaseService<User>, IUserService
 
             await GetAgggregate(userId, publicUserDTO);
 
-            publicUserDTO.JoinedOn = user.CreatedOn;
+            publicUserDTO.JoinedOn = user.CreatedOn.ToString(dateFormat);
 
             publicUserDTO.IsFollowing = (await _relationshipRepository.GetAllAsync(r => r.FollowerId == currentUser && r.FollowingId == userId)).Any();
 
             publicUserDTO.FollowingSince = (await _relationshipRepository
                 .GetAllAsync(r => r.FollowerId == currentUser && r.FollowingId == userId))
                 .Select(r => r.CreatedOn)
-                .FirstOrDefault();
+                .FirstOrDefault()
+                .ToString(dateFormat);
 
             publicUserDTO.PostsLast30Days = (await _postRepository
                 .GetAllAsync(p => p.UserId == userId && p.CreatedOn >= DateTime.UtcNow.AddDays(-30))).Count;
@@ -267,7 +268,7 @@ public class UserService : MongoBaseService<User>, IUserService
 
             var relationships = (await Task.WhenAll(taskRelationships));
 
-            result.SetSuccess(relationships, "User unfollowed successfully");
+            result.SetSuccess(relationships, "Retrieved successfully");
         }
         catch (Exception ex)
         {

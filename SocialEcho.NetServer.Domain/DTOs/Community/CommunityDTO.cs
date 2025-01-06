@@ -1,10 +1,6 @@
 ﻿namespace SocialEcho.NetServer.Domain.DTOs;
 
-public class CommunityDTO
+public class CommunityDTO : UpdateCommunityDTO
 {
-    public string Name { get; init; }
-
-    public string Description { get; init; }
-
-    public string Banner { get; init; }
+    public Guid Id { get; init; }
 }

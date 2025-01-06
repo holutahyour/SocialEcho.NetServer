@@ -4,11 +4,11 @@ public class PublicUserDTO : UserDTO, IUserAggregate
 {
     public int FollowerCount { get; set; }
 
-    public DateTime JoinedOn { get; set; }
+    public string JoinedOn { get; set; }
 
     public bool IsFollowing { get; set; }
 
-    public DateTime FollowingSince { get; set; }
+    public string FollowingSince { get; set; }
 
     public int PostsLast30Days { get; set; }
 

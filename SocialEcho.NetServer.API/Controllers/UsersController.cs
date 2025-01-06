@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SocialEcho.NetServer.Domain.Utilities;
-using SocialEcho.NetServer.Services.Services.Interfaces;
-using Tahyour.Base.Common.Domain.Common;
-
-namespace SocialEcho.NetServer.API.Controllers;
+﻿namespace SocialEcho.NetServer.API.Controllers;
 
 public class UsersController : MongoBaseController<User, UserDTO>
 {
@@ -87,7 +82,7 @@ public class UsersController : MongoBaseController<User, UserDTO>
         return response;
     }
 
-    [HttpPatch("following")]
+    [HttpGet("following")]
     public async Task<Result<RelationshipUserDTO[]>> Following()
     {
         new Result<RelationshipUserDTO[]>().RequestTime = DateTime.UtcNow;

@@ -7,4 +7,5 @@ public class Defaults
     public static string ModeratorRole { get; set; } = "moderator";
     public static string GeneralRole { get; set; } = "general";
     public static Guid DefaultUserId { get; set; } = Guid.Parse("bc9678dd-23b0-4c47-be48-0430d1c357fd");
+    public static string PublicUserSelectedProperties { get; set; } = "id,name,avatar,location,followercount";
 }

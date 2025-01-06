@@ -11,4 +11,6 @@ public class Post : BaseEntity<Guid>
     public Guid UserId { get; init; }
 
     public Guid[] Likes { get; init; }
+
+    public Guid[] Comments { get; init; }
 }

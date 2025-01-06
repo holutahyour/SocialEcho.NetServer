@@ -8,4 +8,3 @@ public class Comment : BaseEntity<Guid>
 
     public Guid PostId { get; init; }
 }
-s

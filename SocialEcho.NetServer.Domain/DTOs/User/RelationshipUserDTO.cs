@@ -3,5 +3,5 @@
 public class RelationshipUserDTO : UpdateUserDTO
 {
     public Guid Id { get; set; }
-    public DateTime FollowingSince { get; set; }
+    public string FollowingSince { get; set; }
 }

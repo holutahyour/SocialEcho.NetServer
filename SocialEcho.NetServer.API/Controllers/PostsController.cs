@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Tahyour.Base.Common.Domain.Common;
-
-namespace SocialEcho.NetServer.API.Controllers;
+﻿namespace SocialEcho.NetServer.API.Controllers;
 
 public class PostsController : MongoBaseController<Post, PostDTO>
 {
@@ -10,13 +7,13 @@ public class PostsController : MongoBaseController<Post, PostDTO>
     }
 
     [HttpPost]
-    public async Task<Result<PostDTO>> CreateAsync([FromBody] PostDTO request)
+    public async Task<Result<PostDTO>> CreateAsync([FromBody] CreatePostDTO request)
     {
         return await base.CreateAsync(request);
     }
 
     [HttpPut("{id}")]
-    public async Task<Result<bool>> UpdateAsync(Guid id, [FromBody] PostDTO request)
+    public async Task<Result<bool>> UpdateAsync(Guid id, [FromBody] UpdatePostDTO request)
     {
         return await base.UpdateAsync(id, request);
     }
