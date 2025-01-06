@@ -2,8 +2,11 @@
 
 public class CommuntiesController : MongoBaseController<Community, CommunityDTO>
 {
-    public CommuntiesController(IMongoBaseService<Community> service) : base(service)
+    private readonly ICommunityService _service;
+
+    public CommuntiesController(ICommunityService service) : base(service)
     {
+        _service = service;
     }
 
     [HttpPost]
@@ -32,7 +35,7 @@ public class CommuntiesController : MongoBaseController<Community, CommunityDTO>
 
         result.RequestTime = DateTime.UtcNow;
 
-        //result = await _service.GetByIdAsync<CommunityDTO>(id);
+        result = await _service.GetByNameAsync(name);
 
         result.ResponseTime = DateTime.UtcNow;
         return Ok(result);
