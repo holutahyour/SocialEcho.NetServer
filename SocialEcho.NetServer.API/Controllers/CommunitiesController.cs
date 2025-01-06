@@ -10,9 +10,15 @@ public class CommuntiesController : MongoBaseController<Community, CommunityDTO>
     }
 
     [HttpPost]
-    public async Task<Result<CommunityDTO>> CreateAsync([FromBody] CreateCommunityDTO request)
+    public async Task<Result<string>> CreateAsync([FromBody] CreateCommunityDTO[] request)
     {
-        return await base.CreateAsync(request);
+        new Result<CommunityDTO>().RequestTime = DateTime.UtcNow;
+
+        Result<string> response = await _service.ImportAsync(request);
+
+        response.ResponseTime = DateTime.UtcNow;
+
+        return response;
     }
 
     [HttpPut("{id}")]
@@ -36,6 +42,62 @@ public class CommuntiesController : MongoBaseController<Community, CommunityDTO>
         result.RequestTime = DateTime.UtcNow;
 
         result = await _service.GetByNameAsync(name);
+
+        result.ResponseTime = DateTime.UtcNow;
+        return Ok(result);
+    }
+
+    [HttpPatch]
+    [Route("{name}/join/{userId}")]
+    public virtual async Task<ActionResult> JoinCommunityAsync(string name, Guid userId)
+    {
+        Result<CommunityDTO> result = new Result<CommunityDTO>();
+
+        result.RequestTime = DateTime.UtcNow;
+
+        result = await _service.JoinCommunityAsync(name, userId);
+
+        result.ResponseTime = DateTime.UtcNow;
+        return Ok(result);
+    }
+
+    [HttpPatch]
+    [Route("{name}/leave/{userId}")]
+    public virtual async Task<ActionResult> LeaveCommunityAsync(string name, Guid userId)
+    {
+        Result<CommunityDTO> result = new Result<CommunityDTO>();
+
+        result.RequestTime = DateTime.UtcNow;
+
+        result = await _service.LeaveCommunityAsync(name, userId);
+
+        result.ResponseTime = DateTime.UtcNow;
+        return Ok(result);
+    }
+
+    [HttpPatch]
+    [Route("{name}/ban/{userId}")]
+    public virtual async Task<ActionResult> BanUserAsync(string name, Guid userId)
+    {
+        Result<CommunityDTO> result = new Result<CommunityDTO>();
+
+        result.RequestTime = DateTime.UtcNow;
+
+        result = await _service.BanUserAsync(name, userId);
+
+        result.ResponseTime = DateTime.UtcNow;
+        return Ok(result);
+    }
+
+    [HttpPatch]
+    [Route("{name}/unban/{userId}")]
+    public virtual async Task<ActionResult> UnBanUserAsync(string name, Guid userId)
+    {
+        Result<CommunityDTO> result = new Result<CommunityDTO>();
+
+        result.RequestTime = DateTime.UtcNow;
+
+        result = await _service.UnBanUserAsync(name, userId);
 
         result.ResponseTime = DateTime.UtcNow;
         return Ok(result);
