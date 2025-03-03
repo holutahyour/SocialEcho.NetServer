@@ -10,7 +10,7 @@ public class Post : BaseEntity<Guid>
 
     public Guid UserId { get; init; }
 
-    public Guid[] Likes { get; init; }
+    public List<Guid> Likes { get; init; } = [];
 
-    public Guid[] Comments { get; init; }
+    public List<Guid> Comments { get; init; } = [];
 }

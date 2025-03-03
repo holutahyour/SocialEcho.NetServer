@@ -12,7 +12,7 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["SocialEcho.NetServer.API/SocialEcho.NetServer.API.csproj", "SocialEcho.NetServer.API/"]
+COPY ["SocialEcho.NetServer.API/SocialEcho.NetServer.API.csproj", "./"]
 RUN dotnet restore "./SocialEcho.NetServer.API/SocialEcho.NetServer.API.csproj"
 COPY . .
 WORKDIR "/src/SocialEcho.NetServer.API"

@@ -8,11 +8,11 @@ public class Community : BaseEntity<Guid>
 
     public string Banner { get; init; }
 
-    public List<Guid> ModeratorIds { get; init; }
+    public List<Guid> ModeratorIds { get; init; } = [];
 
-    public List<Guid> MembersIds { get; init; }
+    public List<Guid> MembersIds { get; init; } = [];
 
-    public List<Guid> BannedMembersIds { get; init; }
+    public List<Guid> BannedMembersIds { get; init; } = [];
 
-    public List<Guid> RuleIds { get; init; }
+    public List<Guid> RuleIds { get; init; } = [];
 }
